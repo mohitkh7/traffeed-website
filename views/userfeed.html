@@ -1,0 +1,101 @@
+<h3>View User Alerts</h3>
+<hr />
+<div class="panel-group">
+	<div class="panel " ng-repeat="feed in feeds | orderBy : '-time'" ng-class="BGColor(feed.intensity)">
+		<div class="panel-heading ">
+		{{feed.location}} 
+		<span class="pull-right">{{showTime(feed.time)}}</span>
+		</div>
+		<div class="panel-body ">
+			<i><small>{{feed.type}}</small></i>
+			<br />
+			{{feed.message}}
+		</div>
+		<div class="text-right" style="margin:0 20px 5px 0;">
+			<button type="button" class="btn btn-xs btn-success" ng-click="setModalValue(feed)" data-toggle="modal" data-target="#myModal">Accept</button>
+			<button class="btn btn-xs btn-danger" ng-click="deleteFeed(feed.$id)">Reject</button>
+				
+		</div>
+	</div>
+	<div ng-show="!feeds.length" class="text-center">
+		<h4>Loading ...</h4>
+	</div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Edit before publish</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+				<!--Title-->
+					<div class="form-group">
+					    <label class="control-label col-lg-4 col-sm-4" for="title">Alert Location : </label>
+					    <div class="col-lg-8 col-sm-8">
+					    	<input type="text" class="form-control " id="location" ng-model="location" required>
+					    </div>
+					</div>
+
+					<!-- Type -->
+					<div class="form-group">
+					    <label class="control-label col-lg-4 col-sm-4" for="type">Alert Type : </label>
+					    <div class="col-lg-4 col-sm-4">
+					    	<select id="type" class="form-control" ng-model="type">
+					    		<option value="Traffic Jam" selected>Traffic Jam</option>
+					    		<option value="Heavy Traffic">Heavy Traffic</option>
+					    		<option value="Road Diversion">Road Diversion</option>
+					    		<option value="VIP Convey">VIP Convey</option>
+					    		<option value="Work in Progress">Work in Progress</option>
+					    		<option value="Notice">Notice</option>
+					    		<option value="Awarness">Awarness</option>
+					    		<option value="other">Other</option>
+
+					    	</select>
+					    </div>
+					</div>
+
+					<!-- Message -->
+					<div class="form-group">
+					    <label class="control-label col-lg-4 col-sm-4" for="message">Alert Message : </label>
+					    <div class="col-lg-8 col-sm-8">
+					    	<textarea class="form-control" id="message" rows="7" ng-model="message" required></textarea>
+					    </div>
+					</div>
+
+					<!-- Intensity -->
+
+					<div class="form-group">
+					    <label class="control-label col-lg-4 col-sm-4" for="intensity">Alert Intensity : </label>
+					    <div class="col-lg-4 col-sm-4">
+					    	<select class="form-control" id="intensity" ng-modal="intensity" >
+					    		<option value="red">High</option>
+					    		<option value="yellow" selected>Medium</option>
+					    		<option value="green">Low</option>
+					    	</select>
+					    </div>
+					</div>
+					<!-- Bottom Buttons -->
+					<div class="text-right">
+						<button type="reset" class="btn btn-default">Reset</button>
+						<button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+						<button class="btn btn-primary" ng-click="saveDraft()" data-dismiss="modal">Save as Draft</button>
+						<button type="submit" class="btn btn-success" ng-click="publishFeed()" data-dismiss="modal">Publish</button>	
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.panel-yellow > .panel-heading{
+		background-image: linear-gradient(to bottom,#f3fcc9 0,#f9fcba 100%) !important;
+	}
+</style>
+
