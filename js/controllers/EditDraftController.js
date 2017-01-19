@@ -1,5 +1,5 @@
 app.controller('EditDraftController', ['$scope','$location', '$routeParams', '$firebaseObject','$firebaseArray', 'FBURL3','FBURL',function($scope, $location, $routeParams, $firebaseObject,$firebaseArray, FBURL3, FBURL){
-	alert(FBURL3+$routeParams.id);
+
     var ref = new Firebase(FBURL3 + $routeParams.id);
     $scope.feedObj = $firebaseObject(ref);
     console.log($scope.feedObj);
@@ -37,6 +37,7 @@ app.controller('EditDraftController', ['$scope','$location', '$routeParams', '$f
             intensity:$scope.feedObj.intensity,
             time:$scope.time,
         });
+	$scope.deleteDraft($routeParams.id);
         //$("#myModal").modal("hide");
         $location.path('/');
     
