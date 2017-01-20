@@ -27,15 +27,23 @@
 				margin-top:70px;
 			}
 			.bg-blue{
-				background-color: rgba(200,200,200,0.5)
+				background-color: rgba(48,80,134,0.3)
 			}
 			li{
 				list-style-type: none;
+				color:#ffffff !important;
+			}
+			.bgimg {
+			    background-image: url('rajwada.jpg');
+			    /*background-image: url(bg-pattern.png),linear-gradient(to left,#7b4397,#dc2430);*/
+			    min-height: 100%;
+			    background-position: center;
+			    background-size: cover;
 			}
 		</style>
   	</head>
 
-  	<body ng-app="myApp">
+  	<body ng-app="myApp" class="bgimg">
 		<!--navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" id="myNavbar">
 		 	<div class="container">
@@ -64,8 +72,10 @@
 
 		 		<!-- side menu -->
 		 		<div class="col-lg-2 col-sm-4 col-xs-12">
+
 		 			<nav class="bg-blue">
 						<ul class="nav nav-pills nav-stacked span2">
+							<li><img src="t5.png" class="img-responsive" style="border:2px solid #777777; border-radius: 15px" /></li>
 						    <li><a href="#/view">View Alerts</a></li>
 						    <li><a href="#/add">Add Alert</a></li>
 						    <li><a href="#/userfeed">View User Alerts</a></li>
