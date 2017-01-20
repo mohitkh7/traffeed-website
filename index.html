@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+	<head>
+    	<meta charset="utf-8">
+    	<title>TrafFeed - AdminPanel</title>
+
+	  	<!-- Bootstrap core CSS -->
+	  	<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap-theme.css" />
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+
+	 	<!-- AngularJS and ng-Route -->
+
+	  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	  	<script src="https://code.angularjs.org/1.4.4/angular-route.min.js"></script>
+
+	    <!-- Firebase -->
+	    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+	  	<!-- AngularFire -->
+	    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+
+	    <!-- custom style -->
+		<style>
+			body{
+				margin-top:70px;
+			}
+			.bg-blue{
+				background-color: rgba(48,80,134,0.3)
+			}
+			li{
+				list-style-type: none;
+				color:#ffffff !important;
+			}
+			.bgimg {
+			    background-image: url('dark.jpeg');
+			    /*background-image: url(bg-pattern.png),linear-gradient(to left,#7b4397,#dc2430);*/
+			    background-attachment:fixed;
+				background-repeat:no-repeat;
+				height:100%;
+				width:100%;
+				
+			}
+		</style>
+  	</head>
+
+  	<body ng-app="myApp" class="bgimg">
+		<!--navbar -->
+		<nav class="navbar navbar-default navbar-fixed-top" id="myNavbar">
+		 	<div class="container">
+		 		<div class="navbar-header">
+		 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+		 				<span class="icon-bar"></span>
+		 				<span class="icon-bar"></span>
+		 				<span class="icon-bar"></span>
+
+		 			</button>
+		 			<a href="" class="navbar-brand">Traffeed - AdminPanel</a> 
+		 		</div><!--navbar header-->
+
+		 		<div class="collapse navbar-collapse" id="navbar-collapse">
+		 			<ul>
+		 			</ul>
+		 		</div>
+
+		 	</div>
+		</nav>
+		<!--navbar ends -->
+
+		<!-- Main Window -->
+		<div class="container">
+		 	<div class="row">
+
+		 		<!-- side menu -->
+		 		<div class="col-lg-2 col-sm-4 col-xs-12">
+
+		 			<nav class="bg-blue">
+						<ul class="nav nav-pills nav-stacked span2">
+							<li><img src="t5.png" class="img-responsive" style="border:2px solid #777777; border-radius: 15px" /></li>
+						    <li><a href="#/view">View Alerts</a></li>
+						    <li><a href="#/add">Add Alert</a></li>
+						    <li><a href="#/userfeed">View User Alerts</a></li>
+						    <li><a href="#/drafts">Drafts</a></li>
+						</ul>
+					</nav>
+		 		</div>
+
+		 		<!-- Main Action Panel -->
+		 		<div class="col-lg-10 col-sm-8 cols-xs-12">
+		 			<div ng-view></div>
+		 		</div>
+		 	</div><!-- Row Ends-->
+		</div><!-- container ends-->
+
+		<!-- Module -->
+        <script src="js/app.js"></script>
+
+        <!-- Controllers -->
+        <script src="js/controllers/ListController.js"></script>    
+        <script src="js/controllers/AddController.js"></script>     
+        <script src="js/controllers/EditController.js"></script>
+        <script src="js/controllers/UserFeedController.js"></script>
+        <script src="js/controllers/DraftsController.js"></script>
+        <script type="text/javascript" src="js/controllers/EditDraftController.js"></script>
+
+        <!-- bootstrap -->
+        <script src="js/jquery.js"></script>
+  		<script src="js/bootstrap.min.js"></script> 
+       	
+	</body>
+</html>
