@@ -1,0 +1,57 @@
+<!-- Login View -->
+<!--<button class="btn btn-large btn-success" ng-click="getAccess()">Click on button to continue</button><-->
+<!--<div class="bg-white">
+	<!--<form class="form-horizontal">
+		<div class="form-group">
+			<label class="control-label col-lg-2 col-sm-4" for="username">Username : </label>
+		    <div class="col-lg-10 col-sm-8">
+		    	<input type="text" class="form-control " id="username" ng-model="username" required>
+		    </div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label" for="password">Password : </label>
+		    <div class="">
+		    	<input type="password" class="form-control" id="password" ng-model="password" required>
+		    </div>
+		</div>
+	</form>-->
+	<br />
+	<br />
+	<div class="col-md-offset-2 col-md-4 bg-white text-center">
+        <h1 style="margin-bottom:30px; color:white"><u>Login</u></h1>
+
+        <input type="text" id="userName" class="form-control input-lg" ng-model="username" placeholder="Username" />
+        <div class="error" ng-if="userE">Incorrect Username</div>
+        </br>
+        <input type="password" id="userPassword" class="form-control input-lg" ng-model="password" placeholder="Password" />
+        <div class="error" ng-if="userP">Incorrect Password</div>
+        </br>
+        <button class="btn btn-success btn-lg" ng-click="check()">login</button>	
+    </div>
+
+<h2>{{username}}</h2>
+<h2>{{password}}</h2>
+
+<style>
+	.loginHide{
+		display:none;
+	}
+	.form-login{
+		
+	}
+	.bg-white{
+		padding:10px 20px;
+		border-radius:10px;
+		border:3px solid #ddd;
+
+
+	}
+	.error{
+		color:#f95143;
+		padding-top:2px;
+		text-align: left!important;
+		font-size:1.2em;
+	}
+
+</style>
