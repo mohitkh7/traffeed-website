@@ -5,6 +5,10 @@ app.controller('UserFeedController', ['$scope', '$firebaseArray', '$firebaseObje
 	$scope.feeds = $firebaseArray(link);
 	console.log($scope.feeds);
 
+	// Setting indore coordinate as user will not have it.
+	$scope.lat=22.7196;
+	$scope.lng=75.8577;
+
 	//To delete Feed
 	$scope.deleteFeed = function(id) {
 		console.log(id);
@@ -31,6 +35,8 @@ app.controller('UserFeedController', ['$scope', '$firebaseArray', '$firebaseObje
 			location:$scope.location,
 			type:$scope.type,
 			message: $scope.message,
+			lat:$scope.lat,
+			lng:$scope.lng,
 			intensity:$scope.intensity,
 			time:$scope.time,
 		});
@@ -48,6 +54,8 @@ app.controller('UserFeedController', ['$scope', '$firebaseArray', '$firebaseObje
 			location:$scope.location,
 			type:$scope.type,
 			message: $scope.message,
+			lat:$scope.lat,
+			lng:$scope.lng,
 			intensity:$scope.intensity,
 			time:$scope.time,
 		});
@@ -94,5 +102,38 @@ app.controller('UserFeedController', ['$scope', '$firebaseArray', '$firebaseObje
 		else 
 			return 'panel-success';
 	};
+
+	//Google Maps Autocomplete 
+	$scope.init=function(){
+		//Bounding in Indore
+		var southWest = new google.maps.LatLng(22.8459, 75.9504 );
+	    var northEast = new google.maps.LatLng(22.6422, 75.6460 );
+	    var indoreBounds = new google.maps.LatLngBounds( southWest, northEast );
+
+	    var options = {
+	        bounds: indoreBounds,
+	        componentRestrictions: {country: 'in'}
+	    };
+
+		var input = document.getElementById('location');
+ 		var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+ 		//To be run when Changed
+ 		google.maps.event.addListener(autocomplete, 'place_changed', function () {
+     		var place = autocomplete.getPlace();
+
+			$scope.lat = place.geometry.location.lat()
+			$scope.lng = place.geometry.location.lng();
+
+			// Then do whatever you want with them
+			$scope.location=place.name;
+			input.value=place.name;
+			console.log(place.name);
+			console.log($scope.lat);
+			console.log($scope.lng);
+		});
+	}
+	$scope.init();
+
 	
 }]);
